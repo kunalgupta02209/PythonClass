@@ -26,8 +26,8 @@ class EgyptianFraction(object):
         for i in range(elements):
             numSum = numSum + numerator[i]
         for i in range(elements):
-            if ()
-
+            if (numSum % fractions[i]) == 0:
+                numSum =
 
 print("Enter the no. of testcases")
 testcases = int(input())
