@@ -15,11 +15,11 @@ class EgyptianFraction(object):
         denominator = 1
         for i in range(elements):
             prod = 1;
-            j = i+1
+            j = i + 1
             while (j != i):
                 j = j%elements
                 prod = prod*fractions[j]
-                j++
+                j = j + 1
             numerator.append(prod)
             denominator = denominator*fractions[i]
         numSum = 0
@@ -35,7 +35,7 @@ class EgyptianFraction(object):
             if ((numSum % i) == 0) and ((denominator % i) == 0):
                 numSum = numSum/i
                 denominator = denominator/i
-            i++
+            i = i + 1
         output(fractions, elements, numsum, denominator)
 
     def output(self, fractions, elements, numsum, denominator):
