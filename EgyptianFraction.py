@@ -5,11 +5,28 @@ class EgyptianFraction(object):
 
     def input_testcase(self):
         elements = int(input())
-        fractions = list();
+        fractions = list()
         for i in range(elements):
             fractions.append(int(input()))
-            
+        compute(fractions, elements)
 
+    def compute(self, fractions, elements):
+        numerator = list()
+        denominator = 1
+        for i in range(elements):
+            prod = 1;
+            j = i+1
+            while (j != i):
+                j = j%elements
+                prod = prod*fractions[j]
+                j++
+            numerator.append(prod)
+            denominator = denominator*fractions[i]
+        numSum = 0
+        for i in range(elements):
+            numSum = numSum + numerator[i]
+        for i in range(elements):
+            if ()
 
 
 print("Enter the no. of testcases")
