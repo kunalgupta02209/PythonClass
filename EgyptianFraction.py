@@ -27,7 +27,24 @@ class EgyptianFraction(object):
             numSum = numSum + numerator[i]
         for i in range(elements):
             if (numSum % fractions[i]) == 0:
-                numSum =
+                numSum = numSum/fractions[i]
+                denominator = denominator/fractions[i]
+        fractions.sort()
+        i = (fractions[elements-1])/2
+        while i > 1:
+            if ((numSum % i) == 0) and ((denominator % i) == 0):
+                numSum = numSum/i
+                denominator = denominator/i
+            i++
+        output(fractions, elements, numsum, denominator)
+
+    def output(self, fractions, elements, numsum, denominator):
+        for i in range(elements):
+            if i != elements-1:
+                print('1/{fractions[i]} + ', end='')
+            else:
+                print('1/{fractions[i]} =', end='')
+        print("{numSum}/{denominator}")
 
 print("Enter the no. of testcases")
 testcases = int(input())
