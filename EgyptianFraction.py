@@ -8,18 +8,16 @@ class EgyptianFraction(object):
         fractions = list()
         for i in range(elements):
             fractions.append(int(input()))
-        compute(fractions, elements)
+        self.compute(fractions, elements)
 
     def compute(self, fractions, elements):
         numerator = list()
         denominator = 1
         for i in range(elements):
-            prod = 1;
-            j = i + 1
-            while (j != i):
-                j = j%elements
-                prod = prod*fractions[j]
-                j = j + 1
+            prod = 1
+            for j in range(elements):
+                if j != i:
+                    prod = prod*fractions[j]
             numerator.append(prod)
             denominator = denominator*fractions[i]
         numSum = 0
@@ -35,16 +33,16 @@ class EgyptianFraction(object):
             if ((numSum % i) == 0) and ((denominator % i) == 0):
                 numSum = numSum/i
                 denominator = denominator/i
-            i = i + 1
-        output(fractions, elements, numsum, denominator)
+            i = i - 1
+        self.output(fractions, elements, numSum, denominator)
 
-    def output(self, fractions, elements, numsum, denominator):
+    def output(self, fractions, elements, numSum, denominator):
         for i in range(elements):
             if i != elements-1:
-                print('1/{fractions[i]} + ', end='')
+                print(f'1/{fractions[i]} + ', end='')
             else:
-                print('1/{fractions[i]} =', end='')
-        print("{numSum}/{denominator}")
+                print(f'1/{fractions[i]} =', end='')
+        print(f"{numSum}/{denominator}")
 
 print("Enter the no. of testcases")
 testcases = int(input())
