@@ -15,6 +15,21 @@ class Fractions:
         num_sum = 0
         den_prod = frac1.den*frac2.den
         num_sum = frac1.den*frac2.num + frac2.den*frac1.num
+        frac = Fraction(num_sum,den_prod)
+        frac = self.reduce(frac)
+        return frac
+
+    def compute_sum_fracs_list(self, fractions):
+        i = 0;
+        n = len(fractions)
+        while i < n:
+            if(i == 0):
+                frac = self.compute_sum_2_fracs(fractions[i], fractions[i+1])
+                i += 2
+            else:
+                frac = self.compute_sum_2_fracs(frac, fractions[i])
+                i += 1
+        return frac
 
     def output_fractions(self, fractions):
         for i in range(len(fractions)):
@@ -24,9 +39,17 @@ class Fractions:
         print(Fraction.num,"/",Fraction.den)
 
     def reduce(self, fraction):
-        i = int(fraction.den/2)+1
+        i = int(fraction.den/2)+2
+        if fraction.num == fraction.den:
+            fraction.num = 1
+            fraction.den = 1
+            return fraction
         while i > 1:
-            if ((fraction % i) == 0) and ((de
+            if ((fraction.num % i) == 0) and ((fraction.den % i) == 0):
+                fraction.num = int(fraction.num / i)
+                fraction.den = int(fraction.den / i)
+            i -= 1
+        return fraction
 
 
 class Fraction:
@@ -36,7 +59,8 @@ class Fraction:
 def main():
     obj = Fractions()
     fractions = obj.input_fractions()
-    obj.output_fractions(fractions)
+    fraction = obj.compute_sum_fracs_list(fractions)
+    obj.output_fraction(fraction)
 
 if __name__ == "__main__":
     main()
