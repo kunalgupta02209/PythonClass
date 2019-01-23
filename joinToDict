@@ -5,12 +5,29 @@ def inputString():
 def convertToLOT(string):
 	lis = [tuple(i.split('=')) for i in string.split(';')];
 	return lis
-def convertToLOD(lis):	
-	li = [{a[0]:a[1]} for a in lis]
-	return li
-def convertToD(lis):
-	dic = {a[0]:a[1] for a in lis}
-	return dic
+def convertToD(datatype, arg):
+	if datatype == 'str':
+		l = arg.split(';')
+		dic = {}
+		for i in l:
+			a = i.split('=')
+			dic[a[0]] = a[1]
+		#li = [{c[0]:c[1] for c in a.split("=")} for a in string.split(';')]
+		return dic
+	if datatype == 'list':
+		dic = {a[0]:a[1] for a in arg}
+		return dic
+#def convertToD(lis):
+#	dic = {a[0]:a[1] for a in lis}
+#	return dic
+def convertBack(lis):
+	s = ""
+	for i in lis:
+		s += "%s=%s;" %(i[0], i[1])
+	s.strip(";")#will not change the value of s
+	s = s.strip(";")
+	print(s)
+	return s;
 
 def printL(li):
 	print(li)
@@ -21,10 +38,11 @@ def main():
 	string = inputString()
 	li = convertToLOT(string)
 	printL(li)
-	lis = convertToLOD(li)
+	str = convertBack(li)
+	lis = convertToD('str',str)
 	printL(lis)
-	dic = convertToD(li)
-	printL(dic)
+	lis = convertToD('list',li)
+	printL(lis)
 
 if __name__ == "__main__":
 	main()
