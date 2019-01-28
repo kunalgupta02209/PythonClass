@@ -1,0 +1,29 @@
+class Menu:
+	def __init__(self):
+		self.itemDic={}
+	def __add__(self, di):
+		k = di[0]
+		v = di[1]
+		self.itemDic[k] = v
+	def remove(self, item):
+		self.itemDic.pop(item)
+	def show(self):
+		for k,v in self.itemDic.items():
+			print(k," = ",v)
+	def __str__(self):
+		stri=""
+		for k,v in self.itemDic.items():
+			stri += str(k)+" = "+str(v)+"\n"
+		#print(self.itemDic.items())
+		return stri
+
+
+def main():
+	m=Menu()
+	m + ("idly",10)
+	m + ("vada",20)
+	#m.show()
+	print(m)
+	 
+if __name__ == "__main__":
+	main()
