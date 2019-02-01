@@ -5,6 +5,7 @@ class Menu:
 		k = di[0]
 		v = di[1]
 		self.itemDic[k] = v
+		return self
 	def remove(self, item):
 		self.itemDic.pop(item)
 	def show(self):
@@ -15,13 +16,16 @@ class Menu:
 		for k,v in self.itemDic.items():
 			stri += str(k)+" = "+str(v)+"\n"
 		#print(self.itemDic.items())
+		stri = stri[:-1]
 		return stri
 
 
 def main():
 	m=Menu()
-	m + ("idly",10)
-	m + ("vada",20)
+	#print(type(m))
+	m = m + ("idly",10) + ("vada",10)
+	#print(type(m))
+	#m + ("vada",20)
 	#m.show()
 	print(m)
 	 
