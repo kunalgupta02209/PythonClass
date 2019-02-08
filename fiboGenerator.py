@@ -1,14 +1,9 @@
-class fibo:
-	def __init__(self,n):
-		self.n = n
-		self.fib = 0
-		self.b = 1
-	def __iter__(self):
-		while(self.n>self.fib):
-			tmp = self.fib
-			self.fib += self.b
-			self.b = tmp
-			yield tmp
-n = 10
-for i in fibo(n):
+def fib(n):
+	fib =0
+	b = 1
+	while(fib < n):
+		yield fib
+		fib, b = fib +b,fib
+n = 30
+for i in fib(n):
     print(i)
